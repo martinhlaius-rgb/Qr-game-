@@ -9,25 +9,25 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Encabezado -->
         <header class="header">
             <h1>🛡️ GUARDIÁN DE INTERNET 🛡️</h1>
             <p class="subtitle">Un juego educativo sobre prácticas seguras en internet</p>
         </header>
 
-        <!-- Main Game Area -->
+        <!-- Área Principal del Juego -->
         <main class="game-area">
-            <!-- Welcome Screen -->
+            <!-- Pantalla de Bienvenida -->
             <section id="welcomeScreen" class="screen active">
                 <div class="welcome-content">
                     <h2>¡Bienvenido, Guardián!</h2>
                     <p>Aprenderás a navegar internet de forma segura mientras juegas y ayudas a tus amigos a evitar peligros.</p>
-                    <button class="btn btn-primary" onclick="startGame()">🎮 Comenzar Juego</button>
-                    <button class="btn btn-secondary" onclick="showQRCode()">📱 Compartir con Código QR</button>
+                    <button class="btn btn-primary" onclick="iniciarJuego()">🎮 Comenzar Juego</button>
+                    <button class="btn btn-secondary" onclick="mostrarCodigoQR()">📱 Compartir con Código QR</button>
                 </div>
             </section>
 
-            <!-- Game Screen -->
+            <!-- Pantalla del Juego -->
             <section id="gameScreen" class="screen">
                 <div class="game-header">
                     <div class="score-board">
@@ -35,27 +35,27 @@
                         <span>Nivel: <strong id="level">1</strong></span>
                         <span>Vidas: <strong id="lives">3</strong> ❤️</span>
                     </div>
-                    <button class="btn btn-small" onclick="pauseGame()">⏸️ Pausa</button>
+                    <button class="btn btn-small" onclick="pausarJuego()">⏸️ Pausa</button>
                 </div>
 
                 <div class="question-container">
-                    <div class="question-number">Pregunta <span id="questionNum">1</span>/5</div>
+                    <div class="question-number">Pregunta <span id="questionNum">1</span>/10</div>
                     <h3 id="question">¿Pregunta?</h3>
                     
                     <div class="options">
-                        <button class="option-btn" onclick="selectAnswer(0)">
+                        <button class="option-btn" onclick="seleccionarRespuesta(0)">
                             <span class="option-letter">A</span>
                             <span id="option0">Opción 1</span>
                         </button>
-                        <button class="option-btn" onclick="selectAnswer(1)">
+                        <button class="option-btn" onclick="seleccionarRespuesta(1)">
                             <span class="option-letter">B</span>
                             <span id="option1">Opción 2</span>
                         </button>
-                        <button class="option-btn" onclick="selectAnswer(2)">
+                        <button class="option-btn" onclick="seleccionarRespuesta(2)">
                             <span class="option-letter">C</span>
                             <span id="option2">Opción 3</span>
                         </button>
-                        <button class="option-btn" onclick="selectAnswer(3)">
+                        <button class="option-btn" onclick="seleccionarRespuesta(3)">
                             <span class="option-letter">D</span>
                             <span id="option3">Opción 4</span>
                         </button>
@@ -65,7 +65,7 @@
                 </div>
             </section>
 
-            <!-- End Game Screen -->
+            <!-- Pantalla Final -->
             <section id="endScreen" class="screen">
                 <div class="end-content">
                     <h2 id="endTitle">¡Juego Terminado!</h2>
@@ -78,38 +78,38 @@
                         <div id="achievementsList"></div>
                     </div>
                     <div class="buttons">
-                        <button class="btn btn-primary" onclick="startGame()">🔄 Jugar de Nuevo</button>
-                        <button class="btn btn-secondary" onclick="shareScore()">📤 Compartir Resultado</button>
-                        <button class="btn btn-secondary" onclick="showWelcome()">🏠 Ir al Inicio</button>
+                        <button class="btn btn-primary" onclick="iniciarJuego()">🔄 Jugar de Nuevo</button>
+                        <button class="btn btn-secondary" onclick="compartirPuntuacion()">📤 Compartir Resultado</button>
+                        <button class="btn btn-secondary" onclick="mostrarBienvenida()">🏠 Ir al Inicio</button>
                     </div>
                 </div>
             </section>
 
-            <!-- QR Code Modal -->
+            <!-- Modal de Código QR -->
             <div id="qrModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeQRModal()">&times;</span>
+                    <span class="close" onclick="cerrarModalQR()">&times;</span>
                     <h2>📱 Comparte este juego</h2>
                     <p>Escanea el código QR o comparte la URL:</p>
                     <div id="qrCode" style="display: flex; justify-content: center; padding: 20px;"></div>
                     <input type="text" id="urlInput" class="url-input" readonly>
-                    <button class="btn btn-primary" onclick="copyURL()">📋 Copiar URL</button>
+                    <button class="btn btn-primary" onclick="copiarURL()">📋 Copiar URL</button>
                 </div>
             </div>
 
-            <!-- Pause Modal -->
+            <!-- Modal de Pausa -->
             <div id="pauseModal" class="modal">
                 <div class="modal-content">
                     <h2>⏸️ Juego en Pausa</h2>
                     <p>¿Qué deseas hacer?</p>
-                    <button class="btn btn-primary" onclick="resumeGame()">▶️ Continuar</button>
-                    <button class="btn btn-secondary" onclick="restartGame()">🔄 Reiniciar</button>
-                    <button class="btn btn-secondary" onclick="showWelcome()">🏠 Menú Principal</button>
+                    <button class="btn btn-primary" onclick="reanudarJuego()">▶️ Continuar</button>
+                    <button class="btn btn-secondary" onclick="reiniciarJuego()">🔄 Reiniciar</button>
+                    <button class="btn btn-secondary" onclick="mostrarBienvenida()">🏠 Menú Principal</button>
                 </div>
             </div>
         </main>
 
-        <!-- Footer -->
+        <!-- Pie de Página -->
         <footer class="footer">
             <p>🔒 Aprende a protegerte en internet • Recuerda siempre usar contraseñas fuertes y nunca compartir información personal</p>
         </footer>
