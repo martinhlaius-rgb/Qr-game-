@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Guardián de Internet - Juego Educativo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🛡️ GUARDIÁN DE INTERNET 🛡️</h1>
+            <p class="subtitle">Un juego educativo sobre prácticas seguras en internet</p>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-area">
+            <!-- Welcome Screen -->
+            <section id="welcomeScreen" class="screen active">
+                <div class="welcome-content">
+                    <h2>¡Bienvenido, Guardián!</h2>
+                    <p>Aprenderás a navegar internet de forma segura mientras juegas y ayudas a tus amigos a evitar peligros.</p>
+                    <button class="btn btn-primary" onclick="startGame()">🎮 Comenzar Juego</button>
+                    <button class="btn btn-secondary" onclick="showQRCode()">📱 Compartir con Código QR</button>
+                </div>
+            </section>
+
+            <!-- Game Screen -->
+            <section id="gameScreen" class="screen">
+                <div class="game-header">
+                    <div class="score-board">
+                        <span>Puntos: <strong id="score">0</strong></span>
+                        <span>Nivel: <strong id="level">1</strong></span>
+                        <span>Vidas: <strong id="lives">3</strong> ❤️</span>
+                    </div>
+                    <button class="btn btn-small" onclick="pauseGame()">⏸️ Pausa</button>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-number">Pregunta <span id="questionNum">1</span>/5</div>
+                    <h3 id="question">¿Pregunta?</h3>
+                    
+                    <div class="options">
+                        <button class="option-btn" onclick="selectAnswer(0)">
+                            <span class="option-letter">A</span>
+                            <span id="option0">Opción 1</span>
+                        </button>
+                        <button class="option-btn" onclick="selectAnswer(1)">
+                            <span class="option-letter">B</span>
+                            <span id="option1">Opción 2</span>
+                        </button>
+                        <button class="option-btn" onclick="selectAnswer(2)">
+                            <span class="option-letter">C</span>
+                            <span id="option2">Opción 3</span>
+                        </button>
+                        <button class="option-btn" onclick="selectAnswer(3)">
+                            <span class="option-letter">D</span>
+                            <span id="option3">Opción 4</span>
+                        </button>
+                    </div>
+
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </section>
+
+            <!-- End Game Screen -->
+            <section id="endScreen" class="screen">
+                <div class="end-content">
+                    <h2 id="endTitle">¡Juego Terminado!</h2>
+                    <div class="final-score">
+                        <p>Puntuación Final: <strong id="finalScore">0</strong> puntos</p>
+                        <p id="endMessage"></p>
+                    </div>
+                    <div class="achievements">
+                        <h3>🏆 Logros Desbloqueados</h3>
+                        <div id="achievementsList"></div>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn btn-primary" onclick="startGame()">🔄 Jugar de Nuevo</button>
+                        <button class="btn btn-secondary" onclick="shareScore()">📤 Compartir Resultado</button>
+                        <button class="btn btn-secondary" onclick="showWelcome()">🏠 Ir al Inicio</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Code Modal -->
+            <div id="qrModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeQRModal()">&times;</span>
+                    <h2>📱 Comparte este juego</h2>
+                    <p>Escanea el código QR o comparte la URL:</p>
+                    <div id="qrCode" style="display: flex; justify-content: center; padding: 20px;"></div>
+                    <input type="text" id="urlInput" class="url-input" readonly>
+                    <button class="btn btn-primary" onclick="copyURL()">📋 Copiar URL</button>
+                </div>
+            </div>
+
+            <!-- Pause Modal -->
+            <div id="pauseModal" class="modal">
+                <div class="modal-content">
+                    <h2>⏸️ Juego en Pausa</h2>
+                    <p>¿Qué deseas hacer?</p>
+                    <button class="btn btn-primary" onclick="resumeGame()">▶️ Continuar</button>
+                    <button class="btn btn-secondary" onclick="restartGame()">🔄 Reiniciar</button>
+                    <button class="btn btn-secondary" onclick="showWelcome()">🏠 Menú Principal</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🔒 Aprende a protegerte en internet • Recuerda siempre usar contraseñas fuertes y nunca compartir información personal</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
